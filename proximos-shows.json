@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-24T01:15:51-03:00",
+  "atualizado_em": "2026-11-24T01:21:59-03:00",
   "shows": [
     {
       "data": "2026-11-28",
@@ -7,7 +7,8 @@
       "evento": "Culto da União Feminina",
       "local": "Igreja AD Terra Fértil",
       "cidade": "Mesquita",
-      "artista": "Hemmely Rodrigues"
+      "artista": "Hemmely Rodrigues",
+      "imagem": "agenda/S013-b1764b3c.jpg"
     },
     {
       "data": "2026-11-29",
