@@ -132,6 +132,16 @@ h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
 .datas h3{font-size:20px;margin:2px 0 4px}
 .onde{display:flex;flex-wrap:wrap;gap:2px 16px;font-size:15px;color:var(--cafe)}
 .onde span{display:inline-flex;align-items:center;gap:6px}
+.datas li.com-banner{grid-template-columns:76px minmax(0,1fr) 64px}
+.banner{width:64px;height:84px;padding:0;border:0;border-radius:12px;overflow:hidden;background:var(--linha);cursor:zoom-in;transition:transform .15s}
+.banner:hover{transform:scale(1.04)}
+.banner img{width:100%;height:100%;object-fit:cover}
+.zoom{border:0;padding:0;background:transparent;max-width:min(92vw,720px);max-height:94vh;overflow:visible;color:var(--creme)}
+.zoom::backdrop{background:rgba(27,20,18,.84)}
+.zoom img{max-width:100%;max-height:82vh;width:auto;height:auto;margin:0 auto;border-radius:14px;background:var(--claro)}
+.zoom .fim{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px}
+.zoom .fim b{font-size:16px}
+.zoom .btn{min-height:44px;padding:0 20px;font-size:15px}
 .agenda .cta{margin-top:28px}
 /* contato */
 .contato{background:var(--terra);color:var(--creme)}
@@ -301,6 +311,10 @@ footer p{margin:0;font-size:14px;color:#D8CBB8}
     <h2 id="t-ag">Próximas datas</h2>
     <p class="intro">Onde a gente vai estar louvando. Venha adorar com a gente.</p>
     <ul class="datas" id="datas"></ul>
+    <dialog class="zoom" id="zoom" aria-label="Banner do evento">
+      <img id="zoom-img" alt="">
+      <div class="fim"><b id="zoom-t"></b><button class="btn btn-c" type="button" id="zoom-x">Fechar</button></div>
+    </dialog>
     <div class="cta"><a class="btn btn-p" href="#contato">Convidar para o seu evento</a></div>
   </div>
 </section>
@@ -365,13 +379,30 @@ fetch("proximos-shows.json", { cache: "no-store" })
       const [, m, dd] = x.data.split("-");
       const f = /felipe/i.test(x.artista || "") && !/hemmely/i.test(x.artista || "");
       const onde = [x.local, x.cidade].filter(Boolean).map(esc).join(" · ");
-      return `<li><span class="dia${f ? " f" : ""}"><b>${dd}</b><span>${MESES[Number(m) - 1]}</span></span><div>`
+      const img = /^agenda\/[\w.-]+\.(?:jpe?g|png|webp)$/i.test(x.imagem || "") ? x.imagem : "";
+      const nomeEv = x.evento || "Ministração";
+      return `<li${img ? ' class="com-banner"' : ""}><span class="dia${f ? " f" : ""}"><b>${dd}</b><span>${MESES[Number(m) - 1]}</span></span><div>`
         + (x.artista ? `<span class="quem">${esc(x.artista)}</span>` : "")
         + `<h3>${esc(x.evento || "Ministração")}</h3><div class="onde">`
         + (onde ? `<span>${icone("local", 18, "currentColor")}${onde}</span>` : "")
         + (x.hora ? `<span>${icone("relogio", 18, "currentColor")}${esc(x.hora)}</span>` : "")
-        + `</div></div></li>`;
+        + `</div></div>`
+        + (img ? `<button type="button" class="banner" data-img="${esc(img)}" data-t="${esc(nomeEv)}" aria-label="Ver o banner de ${esc(nomeEv)}"><img src="${esc(img)}" alt="" loading="lazy" width="64" height="84"></button>` : "")
+        + `</li>`;
     }).join("");
+    const zoom = document.getElementById("zoom");
+    if (zoom && zoom.showModal) {
+      document.querySelectorAll(".banner").forEach(bt => bt.addEventListener("click", () => {
+        document.getElementById("zoom-img").src = bt.dataset.img;
+        document.getElementById("zoom-img").alt = "Banner de " + bt.dataset.t;
+        document.getElementById("zoom-t").textContent = bt.dataset.t;
+        zoom.showModal();
+      }));
+      document.getElementById("zoom-x").addEventListener("click", () => zoom.close());
+      zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
+    } else {
+      document.querySelectorAll(".banner").forEach(bt => bt.addEventListener("click", () => window.open(bt.dataset.img, "_blank", "noopener")));
+    }
     document.getElementById("agenda").hidden = false;
     document.querySelectorAll(".so-agenda").forEach(el => el.hidden = false);
   })
