@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timbre Music · Som com propósito</title>
+<meta name="description" content="Timbre Music, a casa de Hemmely e Felipe Rodrigues: louvor e canções com Hemmely; produção musical, aulas de teclado e teclado para eventos com Felipe. Som com propósito.">
+<meta property="og:title" content="Timbre Music · Som com propósito">
+<meta property="og:description" content="Louvor e canções com Hemmely Rodrigues. Produção musical, aulas de teclado e teclado para eventos com Felipe Rodrigues.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://timbremusic.com.br">
+<meta name="theme-color" content="#A3472A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23A3472A'/%3E%3Cpath d='M18 22c8-3 20-4 30-3M34 20c-4 9-7 18-11 26' fill='none' stroke='%23F4EBDD' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Yellowtail&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicGroup","name":"Timbre Music","slogan":"Som com propósito.","url":"https://timbremusic.com.br","email":"contato@timbremusic.com.br","member":[{"@type":"Person","name":"Hemmely Rodrigues","jobTitle":"Cantora e Compositora"},{"@type":"Person","name":"Felipe Rodrigues","jobTitle":"Tecladista, Produtor e Professor"}],"sameAs":["https://instagram.com/hemmelyrodrigues","https://instagram.com/feliperodrigues.tecla"]}</script>
+<style>
+/* VOICE: calorosa e serena; poucas palavras, uma ação por vez
+   IDEA: o encarte de um disco de louvor: capa, faixas (serviços), artistas, contato
+   PICTURE: o disco-sol creme com o "T" e as teclas na base, só na capa; o resto respira
+   COLOUR and TYPE: terracota, creme e noite do brand book; Yellowtail só em títulos de destaque, DM Sans no resto
+   LAYOUT: capa → serviços → artistas → aprenda → agenda (automática) → contato; um botão principal por seção */
+:root{color-scheme:light;--terra:#A3472A;--terra-esc:#8A3A22;--creme:#F4EBDD;--claro:#FBF7F0;--noite:#1B1412;--cafe:#5A4A42;--linha:#E5DACB}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--claro);color:var(--noite);font:17px/1.6 "DM Sans",Arial,sans-serif;overflow-x:clip}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:none;box-shadow:0 0 0 3px var(--claro),0 0 0 5px var(--terra);border-radius:8px}
+.pular{position:absolute;left:12px;top:-60px;z-index:50;background:var(--noite);color:var(--creme);padding:10px 16px;border-radius:8px;font-weight:700;text-decoration:none}
+.pular:focus{top:12px}
+.band{padding:clamp(64px,9vw,120px) max(5vw,20px)}
+.wrap{max-width:1140px;margin:0 auto}
+h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
+.intro{font-size:clamp(17px,1.6vw,19px);color:var(--cafe);max-width:56ch;margin:0 0 clamp(32px,4vw,48px)}
+.assin{font-family:"Yellowtail",cursive;font-weight:400}
+.ic{display:inline-flex;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid transparent;font:700 16px/1 "DM Sans",Arial,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+.btn-p{background:var(--terra);color:var(--creme)}.btn-p:hover{background:var(--terra-esc)}
+.btn-c{background:var(--creme);color:var(--noite)}.btn-c:hover{background:#fff}
+.btn-l{border-color:currentColor}.btn-l:hover{background:rgba(244,235,221,.12)}
+.link{font-weight:700;color:var(--terra);text-decoration:none;display:inline-flex;align-items:center;gap:6px;min-height:44px}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+/* topo */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,247,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.nav .wrap{display:flex;align-items:center;gap:20px;padding:8px max(5vw,20px);max-width:none}
+.logo{display:inline-flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--terra);line-height:1;margin-right:auto}
+.logo .assin{font-size:32px;transform:rotate(-4deg)}
+.logo small{font-size:8px;font-weight:700;letter-spacing:.5em;padding-left:.5em;color:var(--noite);margin-top:2px}
+.nav ul{display:flex;gap:4px 24px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
+.nav ul a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.nav ul a:hover{color:var(--terra)}
+.nav .btn{min-height:44px;padding:0 20px;font-size:15px}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;cursor:pointer;font-weight:700;font-size:15px;gap:8px;padding:0 10px;border:1px solid var(--linha)}
+.menu summary::-webkit-details-marker{display:none}
+.menu ul{position:absolute;right:0;top:52px;flex-direction:column;background:var(--claro);border:1px solid var(--linha);border-radius:12px;padding:8px 18px;min-width:200px;box-shadow:0 12px 28px rgba(27,20,18,.12)}
+@media(max-width:860px){.nav .links{display:none}.menu{display:block}.nav .btn{display:none}}
+/* capa */
+.capa{background:var(--terra);color:var(--creme);padding-bottom:0;overflow:hidden}
+.capa .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);align-items:center}
+.capa h1{font-size:clamp(58px,8.5vw,108px);line-height:1;transform:rotate(-4deg);transform-origin:left center;margin-bottom:28px}
+.capa .sub{font-size:clamp(18px,1.9vw,21px);max-width:44ch;margin:0 0 32px}
+.capa .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(48px,7vw,88px)}
+.disco{width:100%;max-width:480px;justify-self:end;align-self:end}
+.disco svg{width:100%;height:auto}
+@media(max-width:820px){.capa .wrap{grid-template-columns:minmax(0,1fr)}.disco{justify-self:center;max-width:340px}.capa .acoes .btn{flex:1 1 220px}}
+/* serviços */
+.servicos .grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.serv{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:clamp(24px,3vw,32px);display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 20px;align-content:start}
+.serv .selo{grid-row:span 3;width:56px;height:56px;border-radius:50%;background:var(--terra);color:var(--creme);display:flex;align-items:center;justify-content:center}
+.serv.noite .selo{background:var(--noite)}
+.serv h3{font-size:22px;align-self:center}
+.serv p{margin:4px 0 6px;color:var(--cafe)}
+.serv .link{grid-column:2}
+@media(max-width:760px){.servicos .grade{grid-template-columns:minmax(0,1fr)}}
+.acoes-c{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.canal{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--linha);font-weight:700;font-size:15px;color:var(--noite);text-decoration:none;transition:background-color .15s,border-color .15s}
+.canal:hover{border-color:var(--terra);color:var(--terra)}
+.canal.wa{background:var(--terra);border-color:var(--terra);color:var(--creme)}
+.canal.wa:hover{background:var(--terra-esc);border-color:var(--terra-esc);color:var(--creme)}
+.serv .acoes-c{grid-column:2}
+@media(max-width:520px){.serv{grid-template-columns:minmax(0,1fr);gap:10px}.serv .selo{grid-row:auto;width:48px;height:48px}.serv .acoes-c{grid-column:auto}
+.escolha{grid-template-columns:minmax(0,1fr);gap:10px}.escolha .selo{width:48px;height:48px}.acoes-c .canal{flex:1 1 0;justify-content:center;padding:0 12px}}
+/* artistas */
+.artistas{background:var(--creme)}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.artista{background:var(--claro);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.retrato{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.retrato svg{position:absolute;inset:0;width:100%;height:100%}
+.retrato .ini{position:relative;font-family:"Yellowtail",cursive;font-size:clamp(56px,7vw,96px);color:var(--creme);transform:rotate(-4deg)}
+.artista .corpo{padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:10px;flex:1}
+.artista h3{font-family:"Yellowtail",cursive;font-weight:400;font-size:clamp(36px,3.6vw,44px);color:var(--terra)}
+.papel{margin:0;font-weight:700}
+.artista p{margin:0;color:var(--cafe)}
+.artista details{color:var(--cafe)}
+.artista summary{cursor:pointer;font-weight:700;color:var(--terra);min-height:44px;display:flex;align-items:center;gap:6px}
+.artista summary::marker{content:""}
+.artista summary::after{content:"+";font-size:20px;line-height:1}
+.artista details[open] summary::after{content:"−"}
+.etq{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:var(--terra);color:var(--creme);font-size:12px;font-weight:700;letter-spacing:.08em;padding:6px 12px;border-radius:6px}
+.artista .rodape{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:0 20px}
+@media(max-width:760px){.duo{grid-template-columns:minmax(0,1fr)}}
+/* aprenda */
+.aprenda .grade{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px}
+.curso{background:var(--noite);color:var(--creme);border-radius:18px;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-decoration:none}
+.curso .tag{font-size:13px;font-weight:700;background:var(--terra);padding:6px 12px;border-radius:6px}
+.curso .nome{font-family:"Yellowtail",cursive;font-size:clamp(42px,5vw,60px);line-height:1.05;transform:rotate(-4deg);transform-origin:left center;margin-top:8px}
+.curso .vol{font-weight:700;font-size:14px;letter-spacing:.3em;color:#E8A78F}
+.curso p{margin:4px 0 18px;color:#D8CBB8;max-width:42ch}
+.curso:hover .btn{background:#fff}
+.videos{display:flex;flex-direction:column;gap:12px}
+.video{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff;border:1px solid var(--linha);border-radius:14px;padding:16px 18px;text-decoration:none;flex:1}
+.video:hover{border-color:var(--terra)}
+.video .selo{width:52px;height:52px;border-radius:50%;background:var(--creme);color:var(--terra);display:flex;align-items:center;justify-content:center}
+.video b{display:block;font-size:17px}
+.video small{display:block;font-size:15px;color:var(--cafe)}
+.video>.ic:last-child{color:var(--terra)}
+@media(max-width:820px){.aprenda .grade{grid-template-columns:minmax(0,1fr)}}
+/* agenda (lida de proximos-shows.json, gerado pelo Timbre's) */
+.agenda{background:var(--creme)}
+.datas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.datas li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;align-items:center;background:var(--claro);border-radius:16px;padding:16px 20px 16px 16px}
+.dia{display:flex;flex-direction:column;align-items:center;justify-content:center;width:76px;height:84px;border-radius:12px;background:var(--terra);color:var(--creme)}
+.dia.f{background:var(--noite)}
+.dia b{font-size:30px;line-height:1}
+.dia span{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+.quem{font-size:13px;font-weight:700;color:var(--terra)}
+.datas h3{font-size:20px;margin:2px 0 4px}
+.onde{display:flex;flex-wrap:wrap;gap:2px 16px;font-size:15px;color:var(--cafe)}
+.onde span{display:inline-flex;align-items:center;gap:6px}
+.agenda .cta{margin-top:28px}
+/* contato */
+.contato{background:var(--terra);color:var(--creme)}
+.contato .intro{color:var(--creme)}
+.escolhas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.escolha{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;background:var(--claro);color:var(--noite);border-radius:16px;padding:20px 22px}
+.escolha .selo{width:52px;height:52px;border-radius:50%;background:var(--terra);color:var(--creme);display:flex;align-items:center;justify-content:center}
+.escolha b{display:block;font-size:18px}
+.escolha .acoes-c{margin-top:10px}
+@media(max-width:760px){.escolhas{grid-template-columns:minmax(0,1fr)}}
+/* rodapé */
+footer{background:var(--noite);color:var(--creme);padding:40px max(5vw,20px) 48px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+footer .logo{color:var(--creme);margin:0}footer .logo small{color:var(--creme)}
+footer p{margin:0;font-size:14px;color:#D8CBB8}
+/* barra fixa no celular */
+.barra{display:none}
+@media(max-width:700px){
+  .barra{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:30;transition:transform .2s}
+  .barra .btn{flex:1;box-shadow:0 8px 24px rgba(27,20,18,.25)}
+  .barra.oculta{transform:translateY(120px)}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Timbre Music, início"><span class="assin">Timbre</span><small>MUSIC</small></a>
+    <nav class="links" aria-label="Seções">
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#artistas">Artistas</a></li>
+        <li><a href="#aprenda">Aprenda</a></li>
+        <li class="so-agenda" hidden><a href="#agenda">Agenda</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-p" href="#contato">Fale com a gente</a>
+    <details class="menu">
+      <summary aria-label="Abrir menu">Menu</summary>
+      <nav aria-label="Seções">
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#artistas">Artistas</a></li>
+          <li><a href="#aprenda">Aprenda</a></li>
+          <li class="so-agenda" hidden><a href="#agenda">Agenda</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="conteudo">
+<section class="band capa" id="inicio" aria-labelledby="t-capa">
+  <div class="wrap">
+    <div>
+      <h1 id="t-capa" class="assin">Som com propósito.</h1>
+      <p class="sub">O louvor e as canções de Hemmely Rodrigues. A produção musical e as aulas de teclado de Felipe Rodrigues. Para a sua igreja, o seu evento ou a sua música.</p>
+      <div class="acoes">
+        <a class="btn btn-c" href="#contato">Fale com a gente<span class="ic" data-ic="seta" data-t="20"></span></a>
+        <a class="btn btn-l" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+    <div class="disco" aria-hidden="true">
+      <svg viewBox="0 0 520 520">
+        <g fill="none" stroke="#F4EBDD" opacity=".4"><circle cx="260" cy="250" r="214" stroke-width="3"/><circle cx="260" cy="250" r="244" stroke-width="2"/></g>
+        <circle cx="260" cy="250" r="176" fill="#F4EBDD"/>
+        <circle cx="260" cy="250" r="150" fill="none" stroke="#A3472A" stroke-width="2" opacity=".3"/>
+        <text x="282" y="318" text-anchor="middle" font-family="Yellowtail, cursive" font-size="210" fill="#A3472A">T</text>
+        <g id="teclas"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="band servicos" id="servicos" aria-labelledby="t-serv">
+  <div class="wrap">
+    <h2 id="t-serv">Como podemos servir você</h2>
+    <p class="intro">Quatro frentes, o mesmo cuidado. Escolha a sua e fale com a gente pelo WhatsApp ou por e-mail.</p>
+    <div class="grade">
+      <article class="serv">
+        <span class="selo"><span class="ic" data-ic="microfone" data-t="26"></span></span>
+        <h3>Ministração com a Hemmely</h3>
+        <p>Louvor íntimo e caloroso para cultos, congressos e eventos da sua igreja.</p>
+        <div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20convidar%20a%20Hemmely%20para%20ministrar." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:contato@timbremusic.com.br?subject=Convite%20para%20ministra%C3%A7%C3%A3o" title="contato@timbremusic.com.br" aria-label="E-mail contato@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div>
+      </article>
+      <article class="serv noite">
+        <span class="selo"><span class="ic" data-ic="teclado" data-t="26"></span></span>
+        <h3>Teclado para eventos</h3>
+        <p>Felipe acompanha cantores e ministérios em shows, cultos e gravações, com ensaio e repertório preparados.</p>
+        <div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20consultar%20uma%20data%20para%20teclado%20no%20meu%20evento." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:contato@timbremusic.com.br?subject=Teclado%20para%20evento" title="contato@timbremusic.com.br" aria-label="E-mail contato@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div>
+      </article>
+      <article class="serv">
+        <span class="selo"><span class="ic" data-ic="producao" data-t="26"></span></span>
+        <h3>Produção musical</h3>
+        <p>Tem uma canção guardada? O Felipe cuida do arranjo, da gravação e da faixa pronta, presencial ou online.</p>
+        <div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20produzir%20minha%20m%C3%BAsica." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:producao@timbremusic.com.br?subject=Produ%C3%A7%C3%A3o%20musical" title="producao@timbremusic.com.br" aria-label="E-mail producao@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div>
+      </article>
+      <article class="serv">
+        <span class="selo"><span class="ic" data-ic="aula" data-t="26"></span></span>
+        <h3>Aulas de teclado</h3>
+        <p>Do primeiro acorde ao louvor de domingo: harmonia, levadas e repertório, no seu tempo.</p>
+        <div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20aulas%20de%20teclado." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:aulas@timbremusic.com.br?subject=Aulas%20de%20teclado" title="aulas@timbremusic.com.br" aria-label="E-mail aulas@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band artistas" id="artistas" aria-labelledby="t-art">
+  <div class="wrap">
+    <h2 id="t-art">Os artistas da casa</h2>
+    <p class="intro">Dois músicos, um mesmo chamado: servir com excelência por meio da música.</p>
+    <div class="duo">
+      <article class="artista">
+        <div class="retrato" style="background:#A3472A" role="img" aria-label="Espaço para a foto de Hemmely Rodrigues"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#F4EBDD" opacity=".2" stroke-width="3"><circle cx="40" cy="225" r="80"/><circle cx="40" cy="225" r="140"/><circle cx="40" cy="225" r="200"/><circle cx="40" cy="225" r="260"/></g></svg><span class="ini">Hemmely</span></div>
+        <div class="corpo">
+          <span class="etq"><span class="ic" data-ic="brilho" data-t="14"></span>Primeiro single em breve</span>
+          <h3>Hemmely Rodrigues</h3>
+          <p class="papel">Cantora e Compositora</p>
+          <p>A música chegou cedo para Hemmely Rodrigues. Criada numa família de coral, aos 4 anos ela já cantava ao lado dos seus e, desde então, nunca saiu do ambiente de louvor. Aos 11, começou a ministrar para crianças. Aos 18, passou a integrar o louvor da igreja, onde segue servindo até hoje.</p>
+          <p>Agora, depois de uma vida inteira dedicada à adoração, ela dá o próximo passo e leva seu ministério a novos lugares. Seu louvor é íntimo e caloroso, com a verdade de quem canta o que vive.</p>
+          <div class="rodape"><a class="link" href="https://instagram.com/hemmelyrodrigues">Seguir @hemmelyrodrigues</a></div>
+        </div>
+      </article>
+      <article class="artista">
+        <div class="retrato" style="background:#1B1412" role="img" aria-label="Espaço para a foto de Felipe Rodrigues"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="teclas-felipe"></svg><span class="ini">Felipe</span></div>
+        <div class="corpo">
+          <h3>Felipe Rodrigues</h3>
+          <p class="papel">Tecladista, Produtor e Professor</p>
+          <p>Músico profissional, Felipe Rodrigues produz os lançamentos da casa, ensina teclado e acompanha outros cantores em shows e cultos. No teclado, ele é o groove por trás do louvor.</p>
+          <details>
+            <summary>Conheça a trajetória</summary>
+            <p>Começou no piano aos 12 anos, na FAETEC de Nilópolis, servindo nos cultos da igreja, e aos 16 já dava aulas no Rio de Janeiro e em outros estados. Acompanhou o Grupo Logos e o cantor Chris Durán em apresentações e gravações pelo Brasil, tocou com a Apascentar Music em eventos como a Marcha para Jesus no Rio e gravou no Stereo Studio, em projetos como os do cantor Marcos Miranda. Hoje estuda Composição e Arranjo na Escola de Música Villa-Lobos.</p>
+          </details>
+          <div class="rodape"><a class="link" href="https://instagram.com/feliperodrigues.tecla">Seguir @feliperodrigues.tecla</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band aprenda" id="aprenda" aria-labelledby="t-apr">
+  <div class="wrap">
+    <h2 id="t-apr">Aprenda com o Felipe</h2>
+    <p class="intro">Para quem quer tocar com mais segurança no louvor, no seu ritmo e de onde estiver.</p>
+    <div class="grade">
+      <a class="curso" href="https://felipe-rodrigues-teclas.hotmart.host/pagina-de-vendas-19071c10-9312-4760-ae50-b81225d7a828">
+        <span class="tag">Curso online</span>
+        <span class="nome">Dominando a Harmonia</span>
+        <span class="vol">VOL. 1</span>
+        <p>O passo a passo para entender os acordes e criar harmonias mais ricas no teclado.</p>
+        <span class="btn btn-c">Conhecer o curso<span class="ic" data-ic="seta" data-t="20"></span></span>
+      </a>
+      <div class="videos">
+        <a class="video" href="https://youtube.com/playlist?list=PLUoP66dRY3UGbXo6rRDNCQPECiPxRk0cw"><span class="selo"><span class="ic" data-ic="play" data-t="26"></span></span><span><b>Dicas de harmonia</b><small>Playlist gratuita no YouTube</small></span><span class="ic" data-ic="seta" data-t="20"></span></a>
+        <a class="video" href="https://youtube.com/playlist?list=PLUoP66dRY3UEBZWlqfbNjKlt7EnlkGLul"><span class="selo"><span class="ic" data-ic="teclado" data-t="26"></span></span><span><b>Vídeos do Felipe</b><small>Louvores e arranjos no YouTube</small></span><span class="ic" data-ic="seta" data-t="20"></span></a>
+        <a class="video" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20aulas%20de%20teclado."><span class="selo"><span class="ic" data-ic="mensagem" data-t="26"></span></span><span><b>Aulas particulares</b><small>Fale com o Felipe no WhatsApp</small></span><span class="ic" data-ic="seta" data-t="20"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band agenda" id="agenda" aria-labelledby="t-ag" hidden>
+  <div class="wrap">
+    <h2 id="t-ag">Próximas datas</h2>
+    <p class="intro">Onde a gente vai estar louvando. Venha adorar com a gente.</p>
+    <ul class="datas" id="datas"></ul>
+    <div class="cta"><a class="btn btn-p" href="#contato">Convidar para o seu evento</a></div>
+  </div>
+</section>
+
+<section class="band contato" id="contato" aria-labelledby="t-cont">
+  <div class="wrap">
+    <h2 id="t-cont">Como podemos te ajudar?</h2>
+    <p class="intro">Escolha o assunto e fale por e-mail ou WhatsApp. A gente responde com carinho.</p>
+    <div class="escolhas">
+      <div class="escolha"><span class="selo"><span class="ic" data-ic="microfone" data-t="24"></span></span><div><b>Convidar a Hemmely</b><div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20convidar%20a%20Hemmely%20para%20ministrar." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:contato@timbremusic.com.br?subject=Convite%20para%20ministra%C3%A7%C3%A3o" title="contato@timbremusic.com.br" aria-label="E-mail contato@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div></div></div>
+      <div class="escolha"><span class="selo"><span class="ic" data-ic="teclado" data-t="24"></span></span><div><b>Teclado para o meu evento</b><div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20consultar%20uma%20data%20para%20teclado%20no%20meu%20evento." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:contato@timbremusic.com.br?subject=Teclado%20para%20evento" title="contato@timbremusic.com.br" aria-label="E-mail contato@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div></div></div>
+      <div class="escolha"><span class="selo"><span class="ic" data-ic="producao" data-t="24"></span></span><div><b>Produzir minha música</b><div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Quero%20produzir%20minha%20m%C3%BAsica." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:producao@timbremusic.com.br?subject=Produ%C3%A7%C3%A3o%20musical" title="producao@timbremusic.com.br" aria-label="E-mail producao@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div></div></div>
+      <div class="escolha"><span class="selo"><span class="ic" data-ic="aula" data-t="24"></span></span><div><b>Quero aulas de teclado</b><div class="acoes-c"><a class="canal wa" href="https://wa.me/5521968752521?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20aulas%20de%20teclado." aria-label="WhatsApp (21) 96875-2521"><span class="ic" data-ic="mensagem" data-t="18"></span>WhatsApp</a><a class="canal" href="mailto:aulas@timbremusic.com.br?subject=Aulas%20de%20teclado" title="aulas@timbremusic.com.br" aria-label="E-mail aulas@timbremusic.com.br"><span class="ic" data-ic="email" data-t="18"></span>E-mail</a></div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Timbre Music, voltar ao início"><span class="assin">Timbre</span><small>MUSIC</small></a>
+    <p>Som com propósito. © 2026 Timbre Music · timbremusic.com.br</p>
+  </div>
+</footer>
+
+<div class="barra" id="barra"><a class="btn btn-p" href="#contato">Fale com a gente</a></div>
+
+<script>
+{
+const ICONES = {"microfone": [["r", 9, 3, 6, 11, 3], ["p", "M5.5 11a6.5 6.5 0 0 0 13 0"], ["p", "M12 17.5V21"], ["p", "M9 21h6"]], "teclado": [["r", 3, 5, 18, 14, 2], ["p", "M7.5 12v7"], ["p", "M12 12v7"], ["p", "M16.5 12v7"], ["f", "M6.25 5h2.5v7h-2.5z"], ["f", "M10.75 5h2.5v7h-2.5z"], ["f", "M15.25 5h2.5v7h-2.5z"]], "nota": [["p", "M9 18V5.5l11-2V16"], ["c", 6, 18, 3], ["c", 17, 16, 3]], "aula": [["p", "M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5c-3.5-.5-6.5 0-8.5 1.5z"], ["p", "M12 6.5v13"]], "producao": [["p", "M6 4v3"], ["p", "M6 11v9"], ["p", "M12 4v9"], ["p", "M12 17v3"], ["p", "M18 4v1"], ["p", "M18 9v11"], ["c", 6, 9, 2], ["c", 12, 15, 2], ["c", 18, 7, 2]], "agenda": [["r", 3.5, 5, 17, 15.5, 2], ["p", "M3.5 10h17"], ["p", "M8 3v4"], ["p", "M16 3v4"], ["c", 12, 15, 1.25]], "local": [["p", "M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11z"], ["c", 12, 10, 2.5]], "relogio": [["c", 12, 12, 9], ["p", "M12 7v5l3.5 2"]], "email": [["r", 3, 5.5, 18, 13, 2], ["p", "M3.75 7.25L12 13l8.25-5.75"]], "seta": [["p", "M5 12h14"], ["p", "M13 6l6 6-6 6"]], "play": [["c", 12, 12, 9.25], ["p", "M10 8.75l5.25 3.25L10 15.25z"]], "brilho": [["p", "M12 3c.8 5 4 8.2 9 9-5 .8-8.2 4-9 9-.8-5-4-8.2-9-9 5-.8 8.2-4 9-9z"]], "usuario": [["c", 12, 8, 4], ["p", "M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"]], "onda": [["p", "M4 10.5v3"], ["p", "M8 7.5v9"], ["p", "M12 4v16"], ["p", "M16 8v8"], ["p", "M20 10.5v3"]], "mensagem": [["p", "M4.5 5h15A1.5 1.5 0 0 1 21 6.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 3.5V17h-1A1.5 1.5 0 0 1 3 15.5v-9A1.5 1.5 0 0 1 4.5 5z"]], "fone": [["p", "M3.5 14.5V12a8.5 8.5 0 0 1 17 0v2.5"], ["r", 3.5, 14, 4, 6.5, 1.5], ["r", 16.5, 14, 4, 6.5, 1.5]]};
+function icone(nome, tam, cor) {
+  const els = ICONES[nome]; if (!els) return "";
+  const t = `fill="none" stroke="${cor}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"`;
+  return `<svg width="${tam}" height="${tam}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">` + els.map(e => e[0] === "p" ? `<path d="${e[1]}" ${t}/>` : e[0] === "f" ? `<path d="${e[1]}" fill="${cor}"/>` : e[0] === "c" ? `<circle cx="${e[1]}" cy="${e[2]}" r="${e[3]}" ${t}/>` : `<rect x="${e[1]}" y="${e[2]}" width="${e[3]}" height="${e[4]}" rx="${e[5]}" ${t}/>`).join("") + `</svg>`;
+}
+document.querySelectorAll("[data-ic]").forEach(el => { el.innerHTML = icone(el.dataset.ic, Number(el.dataset.t) || 24, el.dataset.c || "currentColor"); });
+
+const b = [], p = [];
+for (let i = 0; i < 14; i++) b.push(`<rect x="${8 + i * 36}" y="448" width="34" height="80" rx="4" fill="#F4EBDD"/>`);
+[0, 1, 3, 4, 5, 7, 8, 10, 11, 12].forEach(i => p.push(`<rect x="${8 + (i + 1) * 36 - 11}" y="448" width="20" height="48" rx="3" fill="#1B1412"/>`));
+document.getElementById("teclas").innerHTML = b.join("") + p.join("");
+
+const tf = [];
+for (let i = 0; i < 12; i++) tf.push(`<rect x="${i * 36 - 20}" y="140" width="34" height="100" rx="4" fill="#F4EBDD" opacity=".12"/>`);
+[0, 1, 3, 4, 5, 7, 8, 10].forEach(i => tf.push(`<rect x="${(i + 1) * 36 - 31}" y="140" width="20" height="56" rx="3" fill="#F4EBDD" opacity=".2"/>`));
+document.getElementById("teclas-felipe").innerHTML = tf.join("");
+
+
+// Agenda: lê proximos-shows.json (publicado pelo Timbre's) e mostra as próximas 5 datas.
+const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const esc = t => String(t == null ? "" : t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const hojeSP = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
+fetch("proximos-shows.json", { cache: "no-store" })
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(d => {
+    const lista = (Array.isArray(d) ? d : (d.shows || []))
+      .filter(x => /^\d{4}-\d{2}-\d{2}$/.test(x.data || "") && x.data >= hojeSP)
+      .sort((a, b) => (a.data + (a.hora || "")).localeCompare(b.data + (b.hora || "")))
+      .slice(0, 5);
+    if (!lista.length) return;
+    document.getElementById("datas").innerHTML = lista.map(x => {
+      const [, m, dd] = x.data.split("-");
+      const f = /felipe/i.test(x.artista || "") && !/hemmely/i.test(x.artista || "");
+      const onde = [x.local, x.cidade].filter(Boolean).map(esc).join(" · ");
+      return `<li><span class="dia${f ? " f" : ""}"><b>${dd}</b><span>${MESES[Number(m) - 1]}</span></span><div>`
+        + (x.artista ? `<span class="quem">${esc(x.artista)}</span>` : "")
+        + `<h3>${esc(x.evento || "Ministração")}</h3><div class="onde">`
+        + (onde ? `<span>${icone("local", 18, "currentColor")}${onde}</span>` : "")
+        + (x.hora ? `<span>${icone("relogio", 18, "currentColor")}${esc(x.hora)}</span>` : "")
+        + `</div></div></li>`;
+    }).join("");
+    document.getElementById("agenda").hidden = false;
+    document.querySelectorAll(".so-agenda").forEach(el => el.hidden = false);
+  })
+  .catch(() => {});
+
+document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => a.closest("details").removeAttribute("open")));
+
+const barra = document.getElementById("barra");
+const alvos = [document.getElementById("inicio"), document.getElementById("contato")];
+if ("IntersectionObserver" in window) {
+  const vis = new Set();
+  const io = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? vis.add(e.target) : vis.delete(e.target)); barra.classList.toggle("oculta", vis.size > 0); }, { threshold: 0.15 });
+  alvos.forEach(a => io.observe(a));
+}
+}
+</script>
+</body>
+</html>
