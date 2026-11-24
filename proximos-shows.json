@@ -1,6 +1,13 @@
 {
-  "atualizado_em": "2026-11-24T14:08:50-03:00",
+  "atualizado_em": "2026-11-24T14:11:43-03:00",
   "shows": [
+    {
+      "data": "2026-11-28",
+      "hora": "16h",
+      "evento": "Encontro de Mulheres",
+      "cidade": "Seropédica",
+      "artista": "Felipe Rodrigues"
+    },
     {
       "data": "2026-11-28",
       "hora": "19h",
