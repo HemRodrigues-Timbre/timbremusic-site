@@ -122,20 +122,22 @@ h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
 @media(max-width:820px){.aprenda .grade{grid-template-columns:minmax(0,1fr)}}
 /* agenda (lida de proximos-shows.json, gerado pelo Timbre's) */
 .agenda{background:var(--creme)}
-.datas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.datas li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;align-items:center;background:var(--claro);border-radius:16px;padding:16px 20px 16px 16px}
-.dia{display:flex;flex-direction:column;align-items:center;justify-content:center;width:76px;height:84px;border-radius:12px;background:var(--terra);color:var(--creme)}
+.datas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.datas li{display:grid;grid-template-columns:clamp(96px,11vw,128px) minmax(0,1fr);gap:clamp(18px,3vw,32px);align-items:center;background:var(--claro);border-radius:22px;padding:clamp(18px,2.4vw,26px)}
+.dia{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:128/150;width:100%;border-radius:16px;background:var(--terra);color:var(--creme)}
 .dia.f{background:var(--noite)}
-.dia b{font-size:30px;line-height:1}
-.dia span{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
-.quem{font-size:13px;font-weight:700;color:var(--terra)}
-.datas h3{font-size:20px;margin:2px 0 4px}
-.onde{display:flex;flex-wrap:wrap;gap:2px 16px;font-size:15px;color:var(--cafe)}
-.onde span{display:inline-flex;align-items:center;gap:6px}
-.datas li.com-banner{grid-template-columns:76px minmax(0,1fr) 64px}
-.banner{width:64px;height:84px;padding:0;border:0;border-radius:12px;overflow:hidden;background:var(--linha);cursor:zoom-in;transition:transform .15s}
-.banner:hover{transform:scale(1.04)}
+.dia b{font-size:clamp(40px,5vw,58px);font-weight:500;line-height:1}
+.dia span{font-size:clamp(18px,2vw,24px);line-height:1;margin-top:8px}
+.quem{display:block;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+.datas h3{font-size:clamp(22px,2.8vw,32px);font-weight:700;line-height:1.15;margin:8px 0 12px}
+.onde{display:flex;flex-direction:column;gap:6px;font-size:clamp(16px,1.6vw,19px);color:var(--cafe)}
+.onde span{display:flex;align-items:center;gap:10px}
+.onde svg{flex:none}
+.datas li.com-banner{grid-template-columns:clamp(96px,11vw,128px) minmax(0,1fr) clamp(84px,10vw,120px)}
+.banner{width:100%;aspect-ratio:4/5;padding:0;border:0;border-radius:14px;overflow:hidden;background:var(--linha);cursor:zoom-in;transition:transform .15s}
+.banner:hover{transform:scale(1.03)}
 .banner img{width:100%;height:100%;object-fit:cover}
+@media(max-width:560px){.datas li,.datas li.com-banner{grid-template-columns:84px minmax(0,1fr)}.datas li.com-banner .banner{grid-column:1/-1;aspect-ratio:auto;max-height:none}.datas li.com-banner .banner img{height:auto}}
 .zoom{border:0;padding:0;background:transparent;max-width:min(92vw,720px);max-height:94vh;overflow:visible;color:var(--creme)}
 .zoom::backdrop{background:rgba(27,20,18,.84)}
 .zoom img{max-width:100%;max-height:82vh;width:auto;height:auto;margin:0 auto;border-radius:14px;background:var(--claro)}
@@ -309,7 +311,7 @@ footer p{margin:0;font-size:14px;color:#D8CBB8}
 <section class="band agenda" id="agenda" aria-labelledby="t-ag" hidden>
   <div class="wrap">
     <h2 id="t-ag">Próximas datas</h2>
-    <p class="intro">Onde a gente vai estar louvando. Venha adorar com a gente.</p>
+    <p class="intro">Onde estaremos louvando. Venha adorar com a gente.</p>
     <ul class="datas" id="datas"></ul>
     <dialog class="zoom" id="zoom" aria-label="Banner do evento">
       <img id="zoom-img" alt="">
@@ -366,47 +368,94 @@ document.getElementById("teclas-felipe").innerHTML = tf.join("");
 // Agenda: lê proximos-shows.json (publicado pelo Timbre's) e mostra as próximas 5 datas.
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const esc = t => String(t == null ? "" : t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const hojeSP = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
-fetch("proximos-shows.json", { cache: "no-store" })
-  .then(r => r.ok ? r.json() : Promise.reject(r.status))
-  .then(d => {
-    const lista = (Array.isArray(d) ? d : (d.shows || []))
-      .filter(x => /^\d{4}-\d{2}-\d{2}$/.test(x.data || "") && x.data >= hojeSP)
-      .sort((a, b) => (a.data + (a.hora || "")).localeCompare(b.data + (b.hora || "")))
-      .slice(0, 5);
-    if (!lista.length) return;
-    document.getElementById("datas").innerHTML = lista.map(x => {
-      const [, m, dd] = x.data.split("-");
-      const f = /felipe/i.test(x.artista || "") && !/hemmely/i.test(x.artista || "");
-      const onde = [x.local, x.cidade].filter(Boolean).map(esc).join(" · ");
-      const img = /^agenda\/[\w.-]+\.(?:jpe?g|png|webp)$/i.test(x.imagem || "") ? x.imagem : "";
-      const nomeEv = x.evento || "Ministração";
-      return `<li${img ? ' class="com-banner"' : ""}><span class="dia${f ? " f" : ""}"><b>${dd}</b><span>${MESES[Number(m) - 1]}</span></span><div>`
-        + (x.artista ? `<span class="quem">${esc(x.artista)}</span>` : "")
-        + `<h3>${esc(x.evento || "Ministração")}</h3><div class="onde">`
-        + (onde ? `<span>${icone("local", 18, "currentColor")}${onde}</span>` : "")
-        + (x.hora ? `<span>${icone("relogio", 18, "currentColor")}${esc(x.hora)}</span>` : "")
-        + `</div></div>`
-        + (img ? `<button type="button" class="banner" data-img="${esc(img)}" data-t="${esc(nomeEv)}" aria-label="Ver o banner de ${esc(nomeEv)}"><img src="${esc(img)}" alt="" loading="lazy" width="64" height="84"></button>` : "")
-        + `</li>`;
-    }).join("");
-    const zoom = document.getElementById("zoom");
-    if (zoom && zoom.showModal) {
-      document.querySelectorAll(".banner").forEach(bt => bt.addEventListener("click", () => {
-        document.getElementById("zoom-img").src = bt.dataset.img;
-        document.getElementById("zoom-img").alt = "Banner de " + bt.dataset.t;
-        document.getElementById("zoom-t").textContent = bt.dataset.t;
-        zoom.showModal();
-      }));
-      document.getElementById("zoom-x").addEventListener("click", () => zoom.close());
-      zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
-    } else {
-      document.querySelectorAll(".banner").forEach(bt => bt.addEventListener("click", () => window.open(bt.dataset.img, "_blank", "noopener")));
-    }
-    document.getElementById("agenda").hidden = false;
-    document.querySelectorAll(".so-agenda").forEach(el => el.hidden = false);
-  })
-  .catch(() => {});
+function hojeSP() {
+  // AAAA-MM-DD no fuso de São Paulo, sem depender do formato de data do navegador
+  const p = {};
+  new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" })
+    .formatToParts(new Date()).forEach(x => p[x.type] = x.value);
+  return `${p.year}-${p.month}-${p.day}`;
+}
+function baixar(url, ms) {
+  const ctl = "AbortController" in window ? new AbortController() : null;
+  const t = ctl ? setTimeout(() => ctl.abort(), ms) : 0;
+  return fetch(url, { cache: "no-store", signal: ctl ? ctl.signal : undefined })
+    .then(r => { clearTimeout(t); return r.ok ? r.json() : Promise.reject(r.status); });
+}
+// A agenda é lida direto do GitHub, onde o Timbre's publica: aparece na hora, sem esperar
+// (nem gastar) um deploy do Netlify. Se o GitHub falhar, usa a cópia do próprio site.
+// O "?v=" evita que o navegador use uma cópia velha guardada no cache.
+const GH = "https://raw.githubusercontent.com/HemRodrigues-Timbre/timbremusic-site/main/";
+const FONTES = [
+  { url: () => `${GH}proximos-shows.json?v=${Date.now()}`, base: GH },
+  { url: () => `proximos-shows.json?v=${Date.now()}`, base: "" },
+  { url: () => `${GH}proximos-shows.json?v=${Date.now()}`, base: GH },
+  { url: () => `proximos-shows.json?v=${Date.now()}`, base: "" }
+];
+let baseImg = "";
+function obterAgenda(i = 0) {
+  return baixar(FONTES[i].url(), 8000)
+    .then(d => { baseImg = FONTES[i].base; return d; })
+    .catch(e => i + 1 < FONTES.length
+      ? new Promise(ok => setTimeout(ok, 600 * i)).then(() => obterAgenda(i + 1))
+      : Promise.reject(e));
+}
+const zoom = document.getElementById("zoom");
+if (zoom && zoom.showModal) {
+  document.getElementById("zoom-x").addEventListener("click", () => zoom.close());
+  zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
+}
+document.getElementById("datas").addEventListener("click", e => {
+  const bt = e.target.closest(".banner"); if (!bt) return;
+  if (zoom && zoom.showModal) {
+    document.getElementById("zoom-img").src = bt.dataset.img;
+    document.getElementById("zoom-img").alt = "Banner de " + bt.dataset.t;
+    document.getElementById("zoom-t").textContent = bt.dataset.t;
+    zoom.showModal();
+  } else window.open(bt.dataset.img, "_blank", "noopener");
+});
+let carregando = false, ultimaCarga = 0;
+function mostrarAgenda(lista) {
+  const sec = document.getElementById("agenda");
+  const tem = lista.length > 0;
+  if (tem) document.getElementById("datas").innerHTML = lista.map(x => {
+    const [, m, dd] = x.data.split("-");
+    const f = /felipe/i.test(x.artista || "") && !/hemmely/i.test(x.artista || "");
+    const onde = [x.local, x.cidade].filter(Boolean).map(esc).join(" · ");
+    const img = /^agenda\/[\w.-]+\.(?:jpe?g|png|webp)$/i.test(x.imagem || "") ? baseImg + x.imagem : "";
+    const nomeEv = x.evento || "Ministração";
+    return `<li${img ? ' class="com-banner"' : ""}><span class="dia${f ? " f" : ""}"><b>${dd}</b><span>${MESES[Number(m) - 1]}</span></span><div>`
+      + (x.artista ? `<span class="quem">${esc(x.artista)}</span>` : "")
+      + `<h3>${esc(nomeEv)}</h3><div class="onde">`
+      + (onde ? `<span>${icone("local", 22, "currentColor")}${onde}</span>` : "")
+      + (x.hora ? `<span>${icone("relogio", 22, "currentColor")}${esc(x.hora)}</span>` : "")
+      + `</div></div>`
+      + (img ? `<button type="button" class="banner" data-img="${esc(img)}" data-t="${esc(nomeEv)}" aria-label="Ver o banner de ${esc(nomeEv)}"><img src="${esc(img)}" alt="" loading="lazy"></button>` : "")
+      + `</li>`;
+  }).join("");
+  sec.hidden = !tem;
+  document.querySelectorAll(".so-agenda").forEach(el => el.hidden = !tem);
+  if (tem && location.hash === "#agenda" && !mostrarAgenda.rolou) { mostrarAgenda.rolou = true; sec.scrollIntoView(); }
+}
+function carregarAgenda() {
+  if (carregando) return;
+  carregando = true;
+  obterAgenda()
+    .then(d => {
+      const hoje = hojeSP();
+      mostrarAgenda((Array.isArray(d) ? d : (d.shows || []))
+        .filter(x => x && /^\d{4}-\d{2}-\d{2}$/.test(x.data || "") && x.data >= hoje)
+        .sort((a, b) => (a.data + (a.hora || "")).localeCompare(b.data + (b.hora || "")))
+        .slice(0, 5));
+      ultimaCarga = Date.now();
+    })
+    .catch(() => {})
+    .finally(() => { carregando = false; });
+}
+carregarAgenda();
+// Aba restaurada (voltar, celular que reabre a aba, aba parada em segundo plano): busca de novo.
+window.addEventListener("pageshow", e => { if (e.persisted) carregarAgenda(); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() - ultimaCarga > 60000) carregarAgenda(); });
+window.addEventListener("online", carregarAgenda);
 
 document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => a.closest("details").removeAttribute("open")));
 

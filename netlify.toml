@@ -1,0 +1,7 @@
+# Site estático: sem comando de build; publica a raiz do repositório.
+[build]
+  publish = "."
+  # Não faz deploy quando o commit mexe só na agenda (proximos-shows.json e pasta agenda/).
+  # O site já lê a agenda direto do GitHub, então esses commits não precisam de deploy
+  # e não gastam os créditos do plano gratuito do Netlify (15 créditos por deploy).
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)proximos-shows.json' ':(exclude)agenda'"
